@@ -3,11 +3,11 @@ open AdventOfCode.Helpers.File
 
 let solution =
 
-    let filePath = "src/AdventOfCode/2019/Day01/Input.txt"
+    let filePath = sprintf "%s/%s" __SOURCE_DIRECTORY__ "Input.txt"
 
     let readFileLines = readFileAndSplit filePath |> Array.map int
 
-    let getFuelRequiredForModule (mass: int) = floor ((decimal)mass / 3.0m) - 2.0m |> int
+    let getFuelRequiredForModule (mass: int) = mass / 3 - 2
 
     let partOne = readFileLines |> Array.sumBy getFuelRequiredForModule
 
