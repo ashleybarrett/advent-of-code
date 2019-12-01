@@ -12,7 +12,5 @@ type TestClass () =
         let expectedPartTwo = 4972784
         let (actualPartOne, actualPartTwo) = Day01.solution
 
-        true
-
-        //actualPartOne.ShouldBe(expectedPartOne);
-        //actualPartTwo.ShouldBe(expectedPartOne);
+        actualPartOne.ShouldBe(expectedPartOne);
+        actualPartTwo.ShouldBe(expectedPartTwo);
