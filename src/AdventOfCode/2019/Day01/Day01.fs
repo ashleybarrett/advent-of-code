@@ -7,7 +7,7 @@ let solution =
 
     let readFileLines = readFileAndSplit filePath |> Array.map int
 
-    let getFuelRequiredForModule (mass: int) = floor ((decimal)mass /3.0m) - 2.0m |> int
+    let getFuelRequiredForModule (mass: int) = floor ((decimal)mass / 3.0m) - 2.0m |> int
 
     let partOne = readFileLines |> Array.sumBy getFuelRequiredForModule
 
