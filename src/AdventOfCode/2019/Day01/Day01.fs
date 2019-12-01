@@ -9,9 +9,7 @@ let solution =
 
     let getFuelRequiredForModule (mass: int) = floor ((decimal)mass /3.0m) - 2.0m |> int
 
-    let partOne = 
-        readFileLines
-        |> Array.sumBy getFuelRequiredForModule
+    let partOne = readFileLines |> Array.sumBy getFuelRequiredForModule
 
     let partTwo = 
 
@@ -26,8 +24,7 @@ let solution =
             |> Seq.last
             |> fst
             
-        readFileLines
-        |> Array.sumBy getTotalFuelRequiredForModule
+        readFileLines |> Array.sumBy getTotalFuelRequiredForModule
 
     (partOne, partTwo)
 
