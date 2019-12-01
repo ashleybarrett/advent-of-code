@@ -1,8 +1,8 @@
-﻿// Learn more about F# at http://fsharp.org
-
-open System
+﻿open System
 
 [<EntryPoint>]
 let main argv =
     
+    let response = Day01.solution
+
     0
