@@ -15,18 +15,21 @@ module Day02 =
         let sub (newValue: int) (position: int) (currentInput: int list) = 
             List.mapi (fun i v -> if i = position then newValue else v) currentInput
 
-        let rec getFinalPositionZero (startingPosition: int) (currentInput: int list) = 
+        let getFinalZeroPositionValue (addressOne: int), (addressTwo: int) =
+            input |> replacePair addreessOne addressTwo |> processInput 0            
+
+        let rec processInput (startingPosition: int) (currentInput: int list) = 
             match currentInput.[startingPosition..] with
             | 1 :: numberOne :: numberTwo :: position :: _ -> 
                 let add = currentInput.[numberOne] + currentInput.[numberTwo]
                 let next = sub add position currentInput
 
-                getFinalPositionZero (startingPosition + 4) next
+                processInput (startingPosition + 4) next
             | 2 :: numberOne :: numberTwo :: position :: _ -> 
                 let multiple = currentInput.[numberOne] * currentInput.[numberTwo]
                 let next = sub multiple position currentInput
 
-                getFinalPositionZero (startingPosition + 4) next
+                processInput (startingPosition + 4) next
             | _ -> currentInput.Head
 
         let replacePair (addressOne: int) (addressTwo: int) (input: int list) = 
@@ -34,10 +37,7 @@ module Day02 =
             |> sub addressOne 1
             |> sub addressTwo 2
 
-        let partOne = 
-            input
-            |> replacePair 12 2
-            |> getFinalPositionZero 0
+        let partOne = getFinalZeroPositionValue 12 2
 
         let partTwo = 
             let (noun, verb) = 
@@ -47,11 +47,7 @@ module Day02 =
                         yield (numberOne, numberTwo)
                 } 
                 |> Seq.find(fun (addressOne, addressTwo) -> 
-                    let positionZero = 
-                        input
-                        |> replacePair addressOne addressTwo
-                        |> getFinalPositionZero 0
-                    
+                    let positionZero = getFinalZeroPositionValue addressOne addressTwo
                     positionZero = 19690720
                 )
 
