@@ -2,7 +2,6 @@
 
 open NUnit.Framework
 open Shouldly
-open AdventOfCode.Solutions
 
 [<TestFixture>]
 type VerifySolution () =
@@ -16,11 +15,11 @@ type VerifySolution () =
         actualPartOne.ShouldBe(expectedPartOne);
         actualPartTwo.ShouldBe(expectedPartTwo);
     
-    //[<Test>]
-    //member this.VerifyDay02() =
-    //    let expectedPartOne = 5098658
-    //    let expectedPartTwo = 4972784
-    //    let (actualPartOne, actualPartTwo) = AdventOfCode.Solutions.Day02.solution
+    [<Test>]
+    member this.VerifyDay02() =
+        let expectedPartOne = 5098658
+        let expectedPartTwo = 5064
+        let (actualPartOne, actualPartTwo) = Day02.solution
 
-    //    actualPartOne.ShouldBe(expectedPartOne);
-    //    actualPartTwo.ShouldBe(expectedPartTwo);
+        actualPartOne.ShouldBe(expectedPartOne);
+        actualPartTwo.ShouldBe(expectedPartTwo);
