@@ -9,68 +9,50 @@ module Day02 =
 
         let input = 
             readSingleLineFileAndSplit filePath ','
-            |> Array.map int
+            |> List.ofArray
+            |> List.map int
 
-        let rec processLines (currentInput: int array) (mutableInput: int array) = 
-            let chunk = currentInput |> Array.take 4
-            let opcode = chunk.[0]
-            let numberOne = chunk.[1]
-            let numberTwo = chunk.[2]
-            let position = chunk.[3]
+        let sub (newValue: int) (position: int) (currentInput: int list) = 
+            List.mapi (fun i v -> if i = position then newValue else v) currentInput
 
+        let rec getFinalPositionZero (startingPosition: int) (currentInput: int list) = 
+            match currentInput.[startingPosition..] with
+            | 1 :: numberOne :: numberTwo :: position :: _ -> 
+                let add = currentInput.[numberOne] + currentInput.[numberTwo]
+                let next = sub add position currentInput
 
-            match opcode with
-            | 1 -> 
-                mutableInput.[position] <- mutableInput.[numberOne] + mutableInput.[numberTwo]
-                let next = currentInput |> Array.skip 4
+                getFinalPositionZero (startingPosition + 4) next
+            | 2 :: numberOne :: numberTwo :: position :: _ -> 
+                let multiple = currentInput.[numberOne] * currentInput.[numberTwo]
+                let next = sub multiple position currentInput
 
-                processLines next mutableInput
-            | 2 -> 
-                mutableInput.[position] <- mutableInput.[numberOne] * mutableInput.[numberTwo]
+                getFinalPositionZero (startingPosition + 4) next
+            | _ -> currentInput.Head
 
-                let next = currentInput |> Array.skip 4
-
-                processLines next mutableInput
-
-            | _ -> mutableInput
-
-        let replacePair (addressOne: int) (addressTwo: int) (input: int array) = 
-            input.[1] <- addressOne
-            input.[2] <- addressTwo
-
-            input
-
+        let replacePair (addressOne: int) (addressTwo: int) (input: int list) = 
+            input 
+            |> sub addressOne 1
+            |> sub addressTwo 2
 
         let partOne = 
-            let mutable mutableInput = 
-                readSingleLineFileAndSplit filePath ','
-                |> Array.map int 
-                |> replacePair 12 2
-            
-            processLines mutableInput mutableInput |> Array.head
+            input
+            |> replacePair 12 2
+            |> getFinalPositionZero 0
 
         let partTwo = 
-            
-            let values = [|0..99|]
-
             let (noun, verb) = 
                 seq {
-                    for numberOne in values do
-                    for numberTwo in values do
+                    for numberOne in [|0..99|] do
+                    for numberTwo in [|0..99|] do
                         yield (numberOne, numberTwo)
                 } 
                 |> Seq.find(fun (addressOne, addressTwo) -> 
-
-                    let mutable mutableInput = 
-                        readSingleLineFileAndSplit filePath ','
-                        |> Array.map int 
+                    let positionZero = 
+                        input
                         |> replacePair addressOne addressTwo
+                        |> getFinalPositionZero 0
                     
-                    let valueToMatch = 19690720
-                    
-                    let positionZero = processLines mutableInput mutableInput |> Array.head
-                    
-                    positionZero = valueToMatch
+                    positionZero = 19690720
                 )
 
             100 * noun + verb
