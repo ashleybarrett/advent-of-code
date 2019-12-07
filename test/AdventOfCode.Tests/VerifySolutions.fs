@@ -4,7 +4,7 @@ open NUnit.Framework
 open Shouldly
 
 [<TestFixture>]
-type TestClass () =
+type VerifySolution () =
 
     [<Test>]
     member this.VerifySolution1() =
