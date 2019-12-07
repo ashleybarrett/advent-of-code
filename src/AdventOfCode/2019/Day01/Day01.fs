@@ -1,32 +1,35 @@
-module Day01
-open AdventOfCode.Helpers.File
+namespace AdventOfCode.Solutions
 
-let solution =
+module Day01 = 
 
-    let filePath = sprintf "%s/%s" __SOURCE_DIRECTORY__ "Input.txt"
+    open AdventOfCode.Helpers.File
 
-    let readFileLines = readFileAndSplit filePath |> Array.map int
+    let solution =
 
-    let getFuelRequiredForModule (mass: int) = mass / 3 - 2
+        let filePath = sprintf "%s/%s" __SOURCE_DIRECTORY__ "Input.txt"
 
-    let partOne = readFileLines |> Array.sumBy getFuelRequiredForModule
+        let readFileLines = readFile filePath |> Array.map int
 
-    let partTwo = 
+        let getFuelRequiredForModule (mass: int) = mass / 3 - 2
 
-        let getTotalFuelRequiredForModule (mass: int) = 
-            (0,mass)
-            |> Seq.unfold(fun (acc, ele) -> 
-                let fuelForModule = getFuelRequiredForModule ele
-                let runningTotal = fuelForModule + acc
-                Some((runningTotal, fuelForModule), (runningTotal, fuelForModule))
-            )
-            |> Seq.takeWhile(fun (_, ele) -> ele > 0)
-            |> Seq.last
-            |> fst
-            
-        readFileLines |> Array.sumBy getTotalFuelRequiredForModule
+        let partOne = readFileLines |> Array.sumBy getFuelRequiredForModule
 
-    (partOne, partTwo)
+        let partTwo = 
+
+            let getTotalFuelRequiredForModule (mass: int) = 
+                (0,mass)
+                |> Seq.unfold(fun (acc, ele) -> 
+                    let fuelForModule = getFuelRequiredForModule ele
+                    let runningTotal = fuelForModule + acc
+                    Some((runningTotal, fuelForModule), (runningTotal, fuelForModule))
+                )
+                |> Seq.takeWhile(fun (_, ele) -> ele > 0)
+                |> Seq.last
+                |> fst
+                
+            readFileLines |> Array.sumBy getTotalFuelRequiredForModule
+
+        (partOne, partTwo)
 
     
     

@@ -3,6 +3,8 @@
 [<EntryPoint>]
 let main argv =
     
-    let response = Day01.solution
+    let (partOne, partTwo) = AdventOfCode.Solutions.Day02.solution
+
+    printfn "%A %A" partOne partTwo
 
     0
