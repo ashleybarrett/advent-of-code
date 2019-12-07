@@ -15,9 +15,6 @@ module Day02 =
         let sub (newValue: int) (position: int) (currentInput: int list) = 
             List.mapi (fun i v -> if i = position then newValue else v) currentInput
 
-        let getFinalZeroPositionValue (addressOne: int), (addressTwo: int) =
-            input |> replacePair addreessOne addressTwo |> processInput 0            
-
         let rec processInput (startingPosition: int) (currentInput: int list) = 
             match currentInput.[startingPosition..] with
             | 1 :: numberOne :: numberTwo :: position :: _ -> 
@@ -32,10 +29,11 @@ module Day02 =
                 processInput (startingPosition + 4) next
             | _ -> currentInput.Head
 
-        let replacePair (addressOne: int) (addressTwo: int) (input: int list) = 
+        let getFinalZeroPositionValue (addressOne: int) (addressTwo: int) =
             input 
             |> sub addressOne 1
             |> sub addressTwo 2
+            |> processInput 0            
 
         let partOne = getFinalZeroPositionValue 12 2
 
