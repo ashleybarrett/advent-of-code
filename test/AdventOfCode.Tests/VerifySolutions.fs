@@ -23,3 +23,12 @@ type VerifySolution () =
 
         actualPartOne.ShouldBe(expectedPartOne);
         actualPartTwo.ShouldBe(expectedPartTwo);
+
+    [<Test>]
+    member this.VerifyDay04() =
+        let expectedPartOne = 1929
+        let expectedPartTwo = 1306
+        let (actualPartOne, actualPartTwo) = Day04.solution
+
+        actualPartOne.ShouldBe(expectedPartOne);
+        actualPartTwo.ShouldBe(expectedPartTwo);
