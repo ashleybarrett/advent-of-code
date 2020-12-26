@@ -23,7 +23,7 @@ namespace CSharp
         {
             yield return new object[]
             {
-                new Day01(),
+                new Day01()
                 73371,
                 127642310
             };
