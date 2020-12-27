@@ -27,6 +27,13 @@ namespace CSharp
                 73371,
                 127642310
             };
+
+            yield return new object[]
+            {
+                new Day02(),
+                660,
+                530
+            };
         }
     }
 }

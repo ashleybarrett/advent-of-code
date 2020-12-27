@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,11 +10,11 @@ namespace CSharp.Day
         public async Task<long> SolvePartOne()
         {
             const int breaker = 2020;
-
-            var input = 
-                (await File.ReadAllLinesAsync("Input/Day01.txt"))
-                .Select(i => int.Parse(i));
             
+            var input = 
+                (await FileInputHelper.GetInput("Input/Day01.txt"))
+                .Select(i => int.Parse(i));
+
             foreach(var a in input)
             {
                 foreach(var b in input)
@@ -33,7 +34,7 @@ namespace CSharp.Day
             const int breaker = 2020;
 
             var input = 
-                (await File.ReadAllLinesAsync("Input/Day01.txt"))
+                (await FileInputHelper.GetInput("Input/Day01.txt"))
                 .Select(i => int.Parse(i));
             
             foreach(var a in input)
