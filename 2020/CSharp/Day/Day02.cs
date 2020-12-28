@@ -8,7 +8,7 @@ namespace CSharp.Day
     {
         public async Task<long> SolvePartOne()
         {
-            var input = await FileInputHelper.GetInput("Input/Day02.txt");
+            var input = await FileInputHelper.GetInput("Input/day-02.txt");
 
             var passwordPolicies = PassInputToPasswordPolicies(input);
 
@@ -19,7 +19,7 @@ namespace CSharp.Day
 
         public async Task<long> SolvePartTwo()
         {
-            var input = await FileInputHelper.GetInput("Input/Day02.txt");
+            var input = await FileInputHelper.GetInput("Input/day-02.txt");
 
             var passwordPolicies = PassInputToPasswordPolicies(input);
 

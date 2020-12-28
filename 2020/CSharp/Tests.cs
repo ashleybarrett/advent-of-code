@@ -34,6 +34,13 @@ namespace CSharp
                 660,
                 530
             };
+
+            yield return new object[]
+            {
+                new Day03(),
+                234,
+                5813773056
+            };
         }
     }
 }
