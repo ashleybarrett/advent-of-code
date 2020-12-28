@@ -6,10 +6,9 @@ using Shouldly;
 
 namespace CSharp
 {
-    [TestFixture]
     public class Tests
     {
-        [Test, TestCaseSource(nameof(GetCases))]
+        [TestCaseSource(nameof(GetCases))]
         public async Task Solve(IDayPuzzle day, long partOneExpected, long partTwoExpected)
         {
             var partOneActual = await day.SolvePartOne();
