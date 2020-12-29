@@ -40,6 +40,13 @@ namespace CSharp
                 234,
                 5813773056
             };
+
+            yield return new object[]
+            {
+                new Day04(),
+                219,
+                127
+            };
         }
     }
 }
