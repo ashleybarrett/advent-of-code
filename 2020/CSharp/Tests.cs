@@ -20,18 +20,19 @@ namespace CSharp
 
         private static IEnumerable<object[]> GetCases() 
         {
+
             yield return new object[]
             {
-                new Day01(),
-                73371,
-                127642310
+                new Day05(),
+                951,
+                653
             };
 
             yield return new object[]
             {
-                new Day02(),
-                660,
-                530
+                new Day04(),
+                219,
+                127
             };
 
             yield return new object[]
@@ -43,9 +44,16 @@ namespace CSharp
 
             yield return new object[]
             {
-                new Day04(),
-                219,
-                127
+                new Day02(),
+                660,
+                530
+            };
+
+            yield return new object[]
+            {
+                new Day01(),
+                73371,
+                127642310
             };
         }
     }
