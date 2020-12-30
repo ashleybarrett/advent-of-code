@@ -20,6 +20,12 @@ namespace CSharp
 
         private static IEnumerable<object[]> GetCases() 
         {
+            yield return new object[]
+            {
+                new Day06(),
+                6885,
+                3550
+            };
 
             yield return new object[]
             {
