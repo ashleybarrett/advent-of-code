@@ -22,6 +22,20 @@ namespace CSharp
         {
             yield return new object[]
             {
+                new Day09(),
+                18272118,
+                2186361
+            };
+
+            yield return new object[]
+            {
+                new Day08(),
+                1521,
+                1016
+            };
+
+            yield return new object[]
+            {
                 new Day06(),
                 6885,
                 3550
